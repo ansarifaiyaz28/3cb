@@ -1,0 +1,4 @@
+poetry run python3 run_from_config.py \
+      --config_path ./task_configs/nmap.toml \
+      --elicitation_index 1 \
+      --print_comms true

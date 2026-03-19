@@ -23,10 +23,10 @@ class Harness:
         agent: BaseAgent,
         print_comms=True,
     ) -> model.EvalRun:
-        self.agent = agent
-        self.agent.reset()
+        self.agent = agent # save the agent on the harness object
+        self.agent.reset() # clear any memory/state the agent had from previous runs
 
-        self.messages: List[model.ChatMessage] = []
+        self.messages: List[model.ChatMessage] = [] # Start with an empty message history
 
         async with model.database.transaction():
             task_config_snapshot, _ = await model.TaskConfigSnapshot.objects.get_or_create(
@@ -52,6 +52,7 @@ class Harness:
         ).save()
 
         protocol = AVAILABLE_PROTOCOLS[elicitation.terminal_interop_protocol]
+        print(protocol)
 
         for message in elicitation.prefilled_messages:
             message = await model.ChatMessage(
