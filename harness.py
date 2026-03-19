@@ -38,7 +38,7 @@ class Harness:
             raise exceptions.RunErrorException(f'No elicitation with index {elicitation_index} in the config provided.')
 
         elicitation = task_config.elicitations[elicitation_index]
-        
+        print(elicitation)
         async with model.database.transaction():
             elicitation_snapshot, _ = await model.ElicitationSnapshot.objects.get_or_create(
                 toml_content=elicitation.to_normalized_toml(),
