@@ -146,7 +146,7 @@ class Harness:
                     return run
 
                 environment_action = underlying_communication
-                print(environment_action)
+                print("\n\nenvironment_action:\n", environment_action)
 
                 if environment_action:
                     try:
