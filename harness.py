@@ -44,6 +44,9 @@ class Harness:
                 toml_content=elicitation.to_normalized_toml(),
             )
 
+        print("\n\ntask_config_snapshot\n\n", task_config_snapshot)
+        print("\n\nelicitation_snapshot\n\n", elicitation_snapshot)
+
         run = await model.EvalRun(
             task_config_snapshot=task_config_snapshot,
             elicitation_snapshot=elicitation_snapshot,
