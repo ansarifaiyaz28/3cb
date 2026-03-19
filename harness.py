@@ -134,6 +134,7 @@ class Harness:
                     if print_comms:
                         print(f"\n### LLM replied:\n{agent_response_full_text}")
 
+                # If there is flag present in the agent response then the SUCCESS is from agent response
                 if task_config.ruleset.flag in agent_response_full_text:
                     if print_comms:
                         print("\n### Win from the agent")
@@ -145,6 +146,7 @@ class Harness:
                     return run
 
                 environment_action = underlying_communication
+                print(environment_action)
 
                 if environment_action:
                     try:
