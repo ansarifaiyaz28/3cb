@@ -162,6 +162,9 @@ class DockerEnvironment:
         )
         return cpu_usage_delta * d["cpu_stats"]["online_cpus"] / system_usage_delta
 
+    # The code below helpts to perform actions inside an emulated terminal in a container. 
+    # It also helps to read the terminal output and clear for visible.
+
     def act(self, terminal_input_bytes: bytes) -> StepOutcome:
         if not terminal_input_bytes:
             return StepOutcome(

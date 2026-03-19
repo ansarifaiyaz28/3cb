@@ -123,6 +123,8 @@ class Harness:
                     ).save()
                     self.messages.append(message)
 
+                    # Extract terminal command from agent response with filter anything between 
+                    # <keystrokes_to_terminal> ... <keystrokes_to_terminal>
                     underlying_communication = (
                         protocol.extract_environment_action_from_agent_response(
                             agent_response_full_text
