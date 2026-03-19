@@ -9,7 +9,8 @@ def square_number(x):
 
 
 def main():
-    numbers = [1, 2, 3, 4]
+    numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    parallel_runs = len(numbers)
 
     print("Running WITHOUT multiprocessing...")
     start = time.time()
@@ -25,7 +26,7 @@ def main():
     start = time.time()
 
     # Create a pool of 4 worker processes
-    with multiprocessing.Pool(processes=4) as pool:
+    with multiprocessing.Pool(processes=parallel_runs) as pool:
         results = pool.map(square_number, numbers)
 
     print("Results:", results)
