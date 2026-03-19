@@ -11,7 +11,8 @@ def main(
 ):
     task_config = TaskConfig.from_config(config_path)
 
-    f"{task_config.name} \n {task_config.environments["main"]}"
+    print(task_config.name)
+    print(task_config.environments["main"])
 
     env = DockerEnvironment(task_config.name, task_config.environments["main"])
     env.build()
