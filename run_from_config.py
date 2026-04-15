@@ -44,8 +44,8 @@ def main(
     agent_identifier: str = "anthropic",
     # model_name: str = "claude-3-5-sonnet-20241022",
     model_name: str = "claude-sonnet-4-6",
-    total_runs: int = 2,
-    parallel_runs: int = 2,
+    total_runs: int = 3,
+    parallel_runs: int = 3,
     print_comms: bool = True,
 ):
     agent_class = AGENT_FROM_IDENTIFIER[agent_identifier]
