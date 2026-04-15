@@ -1,7 +1,20 @@
-from run_from_config import main
+# from run_from_config import main
 
-main(
-    config_path="./task_configs/nmap.toml",
-    elicitation_index=1,
-    print_comms=True
-)
+# main(
+#     config_path="./task_configs/nmap.toml",
+#     elicitation_index=1,
+#     print_comms=True
+# )
+
+import subprocess
+
+cmd = [
+    "poetry", "run", "python3", "run_from_config.py",
+    "--config_path", "./task_configs/binpwn_gdb_repl.toml",
+    "--elicitation_index", "1",
+    "--agent_identifier", "openai",
+    "--model_name", "gpt-4o-2024-08-06",
+    "--print_comms", "true"
+]
+
+subprocess.run(cmd)
