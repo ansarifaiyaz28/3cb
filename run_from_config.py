@@ -53,10 +53,10 @@ def main(
 
     task_config = TaskConfig.from_config(config_path)
     args = [(task_config, elicitation_index, agent, print_comms)]
-    print(args)
+    print("\n=================\n",args)
     args *= total_runs
     np.random.shuffle(args)
-    print(args)
+    print("\n=================\n",args)
     
 
     # console = Console()
