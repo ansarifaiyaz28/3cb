@@ -27,7 +27,8 @@ async def single_run_from_config(
 ):
     run = await harness.run(
         task_config=task_config,
-        elicitation_index=elicitation_index,
+        # elicitation index is used for
+        elicitation_index=elicitation_index,  
         agent=agent,
         print_comms=print_comms,
     )
@@ -44,8 +45,8 @@ def main(
     agent_identifier: str = "anthropic",
     # model_name: str = "claude-3-5-sonnet-20241022",
     model_name: str = "claude-sonnet-4-6",
-    total_runs: int = 3,
-    parallel_runs: int = 3,
+    total_runs: int = 1, # to create n numbers of argument pairs
+    parallel_runs: int = 1, # to create n number of subprocesses
     print_comms: bool = True,
 ):
     agent_class = AGENT_FROM_IDENTIFIER[agent_identifier]
