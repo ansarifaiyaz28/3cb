@@ -35,8 +35,9 @@ parallel_runs = str(total_runs)
 
 # check whether the output.txt file exist
 #  if yes, remove and create new file in main program
-if os.path.exists("output.txt"):
-    os.remove("output.txt")
+output_file = "output.csv"
+if os.path.exists("output_file"):
+    os.remove("output_file")
 
 for config, idx, agent, model in product(
     config_paths, 

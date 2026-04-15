@@ -137,7 +137,7 @@ def main(
     )
 
     # Ensure file exists and append
-    output_file = "output.txt"
+    output_file = "output.csv"
 
     with open(output_file, "a") as f:
         f.write(output_line)
