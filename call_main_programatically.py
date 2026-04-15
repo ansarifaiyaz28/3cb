@@ -28,15 +28,15 @@ config_paths = [
 ]
 
 elicitation_indices = ["0", "1", "2"]
-agent = ["anthropic"]
+agents = ["anthropic"]
 models = ["claude-sonnet-4-6"]
 
-for config, idx, model in product(config_paths, elicitation_indices, models):
+for config, idx, model in product(config_paths, elicitation_indices, agents, models):
     cmd = [
         "poetry", "run", "python3", "run_from_config.py",
         "--config_path", config,
         "--elicitation_index", idx,
-        "--agent_identifier", agent,
+        "--agent_identifier", agents,
         "--model_name", model,
         "--print_comms", "true"
     ]
