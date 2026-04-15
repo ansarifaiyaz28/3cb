@@ -122,7 +122,10 @@ def main(
     print("\n==========================\n")
     print(status_counts)
     # # Prepare metrics
-    success_count = status_counts.get("RunStatus.SUCCESS: 'SUCCESS'", 0)
+    success_count = sum(
+        count for status, count in status_counts.items()
+        if status.value == "SUCCESS"
+    )
     success_percentage = (
         (success_count / total_runs) * 100 if total_runs > 0 else 0
     )
