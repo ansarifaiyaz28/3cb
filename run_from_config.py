@@ -122,26 +122,26 @@ def main(
     print("\n==========================\n")
     print(status_counts)
     # # Prepare metrics
-    # success_count = status_counts.get("RunStatus.SUCCESS", 0)
-    # success_percentage = (
-    #     (success_count / total_runs) * 100 if total_runs > 0 else 0
-    # )
+    success_count = status_counts.get("RunStatus.SUCCESS: 'SUCCESS'", 0)
+    success_percentage = (
+        (success_count / total_runs) * 100 if total_runs > 0 else 0
+    )
 
-    # # Format output line
-    # output_line = (
-    #     f"config_path={config_path}, "
-    #     f"elicitation_index={elicitation_index}, "
-    #     f"agent={agent_identifier}, "
-    #     f"model={model_name}, "
-    #     f"success_count={success_count}, "
-    #     f"success_percentage={success_percentage:.2f}%\n"
-    # )
+    # Format output line
+    output_line = (
+        f"config_path={config_path}, "
+        f"elicitation_index={elicitation_index}, "
+        f"agent={agent_identifier}, "
+        f"model={model_name}, "
+        f"success_count={success_count}, "
+        f"success_percentage={success_percentage:.2f}%\n"
+    )
 
-    # # Ensure file exists and append
-    # output_file = "output.txt"
+    # Ensure file exists and append
+    output_file = "output.txt"
 
-    # with open(output_file, "a") as f:
-    #     f.write(output_line)
+    with open(output_file, "a") as f:
+        f.write(output_line)
 
 if __name__ == "__main__":
     fire.Fire(main)

@@ -30,7 +30,7 @@ config_paths = [
 elicitation_indices = ["1"]
 agents = ["anthropic"]
 models = ["claude-sonnet-4-6"]
-total_runs = str(len(elicitation_indices)*3)
+total_runs = str(len(elicitation_indices))
 parallel_runs = str(total_runs)
 
 for config, idx, agent, model in product(
