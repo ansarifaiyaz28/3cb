@@ -27,7 +27,7 @@ config_paths = [
     "./task_configs/binpwn_gdb_repl.toml"
 ]
 
-elicitation_indices = ["0"]
+elicitation_indices = ["0", "1"]
 agents = ["anthropic"]
 models = ["claude-sonnet-4-6"]
 total_runs = str(len(elicitation_indices))
@@ -36,8 +36,8 @@ parallel_runs = str(total_runs)
 # check whether the output.txt file exist
 #  if yes, remove and create new file in main program
 output_file = "output.csv"
-if os.path.exists("output_file"):
-    os.remove("output_file")
+if os.path.exists(output_file):
+    os.remove(output_file)
 
 for config, idx, agent, model in product(
     config_paths, 
