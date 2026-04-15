@@ -40,10 +40,6 @@ async def single_run_from_config(
 def sync_wrapper_for_multiprocessing(args):
     return asyncio.run(single_run_from_config(*args))
 
-# check whether the output.txt file exist
-#  if yes, remove and create new file in main program
-if os.path.exists("output.txt"):
-    os.remove("output.txt")
 
 def main(
     # default

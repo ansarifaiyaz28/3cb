@@ -18,7 +18,7 @@
 # ]
 
 # subprocess.run(cmd)
-
+import os
 import subprocess
 from itertools import product
 
@@ -32,6 +32,11 @@ agents = ["anthropic"]
 models = ["claude-sonnet-4-6"]
 total_runs = str(len(elicitation_indices))
 parallel_runs = str(total_runs)
+
+# check whether the output.txt file exist
+#  if yes, remove and create new file in main program
+if os.path.exists("output.txt"):
+    os.remove("output.txt")
 
 for config, idx, agent, model in product(
     config_paths, 
