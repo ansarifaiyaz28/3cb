@@ -19,7 +19,7 @@ class Harness:
     async def run(
         self,
         task_config: TaskConfig,
-        elicitation_index: int,
+        elicitation_index: int, # 0 = MARKDOWN_CODE_BLOCKS in nmap.toml
         agent: BaseAgent,
         print_comms=True,
     ) -> model.EvalRun:

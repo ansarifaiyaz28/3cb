@@ -27,7 +27,8 @@ async def single_run_from_config(
 ):
     run = await harness.run(
         task_config=task_config,
-        # elicitation index is used for
+        # elicitation index is used to chose one of the prompts defined in the 
+        # toml (task_configs) files. e.g., 0 = MARKDOWN_CODE_BLOCKS in nmap.toml
         elicitation_index=elicitation_index,  
         agent=agent,
         print_comms=print_comms,
@@ -41,7 +42,7 @@ def sync_wrapper_for_multiprocessing(args):
 
 def main(
     config_path: str,
-    elicitation_index: int,
+    elicitation_index: int, # 0 = MARKDOWN_CODE_BLOCKS in nmap.toml
     agent_identifier: str = "anthropic",
     # model_name: str = "claude-3-5-sonnet-20241022",
     model_name: str = "claude-sonnet-4-6",
