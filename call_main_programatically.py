@@ -33,7 +33,7 @@ models = ["claude-sonnet-4-6"]
 total_runs = len(elicitation_indices)
 parallel_runs = total_runs
 
-for config, idx, agent, model in product(
+for config, idx, agent, model, t_tun, p_run in product(
     config_paths, 
     elicitation_indices, 
     agents, 
