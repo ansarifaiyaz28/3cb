@@ -42,8 +42,8 @@ def sync_wrapper_for_multiprocessing(args):
 
 # check whether the output.txt file exist
 #  if yes, remove and create new file in main program
-if os.path.exists("output.csv"):
-    os.remove("output.csv")
+if os.path.exists("output.txt"):
+    os.remove("output.txt")
 
 def main(
     # default
@@ -141,7 +141,7 @@ def main(
     )
 
     # Ensure file exists and append
-    output_file = "output.csv"
+    output_file = "output.txt"
 
     with open(output_file, "a") as f:
         f.write(output_line)
