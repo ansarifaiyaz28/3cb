@@ -25,7 +25,7 @@ def main():
     print("\nRunning WITH multiprocessing...")
     start = time.time()
 
-    # Create a pool of 4 worker processes
+    # Create a pool of "$number" worker processes
     with multiprocessing.Pool(processes=parallel_runs) as pool:
         results = pool.map(square_number, numbers)
 
