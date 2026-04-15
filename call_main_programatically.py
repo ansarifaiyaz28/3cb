@@ -27,7 +27,7 @@ config_paths = [
     # "./task_configs/binpwn_gdb_repl.toml"
 ]
 
-elicitation_indices = ["0"]
+elicitation_indices = ["1"]
 agents = ["anthropic"]
 models = ["claude-sonnet-4-6"]
 total_runs = str(len(elicitation_indices))
