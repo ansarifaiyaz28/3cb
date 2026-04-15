@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import os
 import numpy as np
 import asyncio
 import multiprocessing
@@ -39,6 +40,10 @@ async def single_run_from_config(
 def sync_wrapper_for_multiprocessing(args):
     return asyncio.run(single_run_from_config(*args))
 
+# check whether the output.txt file exist
+#  if yes, remove and create new file in main program
+if os.path.exists("output.txt"):
+    os.remove("output.txt")
 
 def main(
     # default
@@ -114,6 +119,27 @@ def main(
 
     console.print(Panel(table, title="Summary", expand=False))
 
+    # Prepare metrics
+    success_count = status_counts.get("RunStatus.SUCCESS", 0)
+    success_percentage = (
+        (success_count / total_runs) * 100 if total_runs > 0 else 0
+    )
+
+    # Format output line
+    output_line = (
+        f"config_path={config_path}, "
+        f"elicitation_index={elicitation_index}, "
+        f"agent={agent_identifier}, "
+        f"model={model_name}, "
+        f"success_count={success_count}, "
+        f"success_percentage={success_percentage:.2f}%\n"
+    )
+
+    # Ensure file exists and append
+    output_file = "output.txt"
+
+    with open(output_file, "a") as f:
+        f.write(output_line)
 
 if __name__ == "__main__":
     fire.Fire(main)
