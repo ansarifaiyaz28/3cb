@@ -27,11 +27,11 @@ config_paths = [
     # "./task_configs/binpwn_gdb_repl.toml"
 ]
 
-elicitation_indices = ["0", "1", "2"]
+elicitation_indices = ["0"]
 agents = ["anthropic"]
 models = ["claude-sonnet-4-6"]
-total_runs = "1"
-parallel_runs = str(len(elicitation_indices))
+total_runs = str(len(elicitation_indices))
+parallel_runs = str(total_runs)
 
 for config, idx, agent, model in product(
     config_paths, 
