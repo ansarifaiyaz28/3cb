@@ -57,7 +57,7 @@ def main(
     args *= total_runs
     np.random.shuffle(args)
     print(args)
-    break
+    
 
     console = Console()
 
