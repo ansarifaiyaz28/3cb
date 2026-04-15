@@ -44,8 +44,8 @@ def main(
     agent_identifier: str = "anthropic",
     # model_name: str = "claude-3-5-sonnet-20241022",
     model_name: str = "claude-sonnet-4-6",
-    total_runs: int = 1,
-    parallel_runs: int = 1,
+    total_runs: int = 2,
+    parallel_runs: int = 2,
     print_comms: bool = True,
 ):
     agent_class = AGENT_FROM_IDENTIFIER[agent_identifier]
@@ -53,53 +53,53 @@ def main(
 
     task_config = TaskConfig.from_config(config_path)
     args = [(task_config, elicitation_index, agent, print_comms)]
-    print("\n=================\n",args)
+    # print("\n=================\n",args)
     args *= total_runs
     np.random.shuffle(args)
-    print("\n=================\n",args)
+    # print("\n=================\n",args)
     
 
-    # console = Console()
+    console = Console()
 
-    # statuses = []
+    statuses = []
 
-    # with Progress(
-    #     SpinnerColumn(),
-    #     TextColumn("[progress.description]{task.description}"),
-    #     BarColumn(),
-    #     TextColumn("[progress.percentage]{task.percentage:>3.0f}%"),
-    #     TimeElapsedColumn(),
-    #     console=console,
-    #     expand=True,
-    # ) as progress:
-    #     overall_task = progress.add_task("[cyan]Overall Progress", total=len(args))
-    #     run_tasks = [
-    #         progress.add_task(f"[green]Run {i+1}", total=1) for i in range(len(args))
-    #     ]
+    with Progress(
+        SpinnerColumn(),
+        TextColumn("[progress.description]{task.description}"),
+        BarColumn(),
+        TextColumn("[progress.percentage]{task.percentage:>3.0f}%"),
+        TimeElapsedColumn(),
+        console=console,
+        expand=True,
+    ) as progress:
+        overall_task = progress.add_task("[cyan]Overall Progress", total=len(args))
+        run_tasks = [
+            progress.add_task(f"[green]Run {i+1}", total=1) for i in range(len(args))
+        ]
 
-    #     with multiprocessing.Pool(processes=parallel_runs) as pool:
-    #         for i, status in enumerate(
-    #             pool.imap_unordered(sync_wrapper_for_multiprocessing, args)
-    #         ):
-    #             progress.update(
-    #                 run_tasks[i], advance=1, description=f"[green]Run {i+1}: {status}"
-    #             )
-    #             progress.update(overall_task, advance=1)
-    #             statuses.append(status)
+        with multiprocessing.Pool(processes=parallel_runs) as pool:
+            for i, status in enumerate(
+                pool.imap_unordered(sync_wrapper_for_multiprocessing, args)
+            ):
+                progress.update(
+                    run_tasks[i], advance=1, description=f"[green]Run {i+1}: {status}"
+                )
+                progress.update(overall_task, advance=1)
+                statuses.append(status)
 
-    # status_counts = Counter(statuses)
-    # total_runs = len(statuses)
+    status_counts = Counter(statuses)
+    total_runs = len(statuses)
 
-    # table = Table(title="Run Status Summary")
-    # table.add_column("Status", style="cyan")
-    # table.add_column("Count", style="magenta")
-    # table.add_column("Percentage", style="green")
+    table = Table(title="Run Status Summary")
+    table.add_column("Status", style="cyan")
+    table.add_column("Count", style="magenta")
+    table.add_column("Percentage", style="green")
 
-    # for status, count in status_counts.items():
-    #     percentage = (count / total_runs) * 100
-    #     table.add_row(str(status), str(count), f"{percentage:.2f}%")
+    for status, count in status_counts.items():
+        percentage = (count / total_runs) * 100
+        table.add_row(str(status), str(count), f"{percentage:.2f}%")
 
-    # console.print(Panel(table, title="Summary", expand=False))
+    console.print(Panel(table, title="Summary", expand=False))
 
 
 if __name__ == "__main__":
