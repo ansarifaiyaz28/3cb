@@ -30,14 +30,24 @@ config_paths = [
 elicitation_indices = ["0", "1", "2"]
 agents = ["anthropic"]
 models = ["claude-sonnet-4-6"]
+total_runs = len(elicitation_indices)
+parallel_runs = total_runs
 
-for config, idx, agent, model in product(config_paths, elicitation_indices, agents, models):
+for config, idx, agent, model in product(
+    config_paths, 
+    elicitation_indices, 
+    agents, 
+    models,
+    total_runs,
+    parallel_runs):
     cmd = [
         "poetry", "run", "python3", "run_from_config.py",
         "--config_path", config,
         "--elicitation_index", idx,
         "--agent_identifier", agent,
         "--model_name", model,
+        "--total_runs", total_runs,
+        "--parallel_runs", parallel_runs,
         "--print_comms", "true"
     ]
 

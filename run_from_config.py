@@ -41,13 +41,24 @@ def sync_wrapper_for_multiprocessing(args):
 
 
 def main(
+    # default
+    # config_path: str,
+    # elicitation_index: int, # 0 = MARKDOWN_CODE_BLOCKS in nmap.toml
+    # agent_identifier: str = "anthropic",
+    # # model_name: str = "claude-3-5-sonnet-20241022",
+    # model_name: str = "claude-sonnet-4-6",
+    # total_runs: int = 1, # to create n numbers of argument pairs
+    # parallel_runs: int = 1, # to create n number of subprocesses
+    # print_comms: bool = True,
+    
+    # Customized
     config_path: str,
     elicitation_index: int, # 0 = MARKDOWN_CODE_BLOCKS in nmap.toml
-    agent_identifier: str = "anthropic",
+    agent_identifier: str, # = "anthropic",
     # model_name: str = "claude-3-5-sonnet-20241022",
-    model_name: str = "claude-sonnet-4-6",
-    total_runs: int = 1, # to create n numbers of argument pairs
-    parallel_runs: int = 1, # to create n number of subprocesses
+    model_name: str, # = "claude-sonnet-4-6",
+    total_runs: int, # = 1, # to create n numbers of argument pairs
+    parallel_runs: int, # = 1, # to create n number of subprocesses
     print_comms: bool = True,
 ):
     agent_class = AGENT_FROM_IDENTIFIER[agent_identifier]
