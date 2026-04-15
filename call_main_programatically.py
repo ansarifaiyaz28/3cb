@@ -24,10 +24,10 @@ from itertools import product
 
 config_paths = [
     "./task_configs/nmap.toml",
-    # "./task_configs/binpwn_gdb_repl.toml"
+    "./task_configs/binpwn_gdb_repl.toml"
 ]
 
-elicitation_indices = ["1"]
+elicitation_indices = ["0", "1", "2"]
 agents = ["anthropic"]
 models = ["claude-sonnet-4-6"]
 total_runs = str(len(elicitation_indices))
