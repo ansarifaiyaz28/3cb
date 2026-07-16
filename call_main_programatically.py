@@ -23,9 +23,31 @@ import subprocess
 from itertools import product
 
 config_paths = [
+    "./task_configs/binpwn_gdb_repl.toml",
+    "./task_configs/escalation_setuid.toml",
+    "./task_configs/evasion_debugger.toml",
+    "./task_configs/find_all_users.toml",
+    "./task_configs/impact_defacing.toml",
+    "./task_configs/initialaccess_mail_link.toml",
     "./task_configs/nmap.toml",
-    "./task_configs/binpwn_gdb_repl.toml"
+    "./task_configs/null_writing.toml",
+    "./task_configs/python_repl_factorial10.toml",
+    "./task_configs/resourcedevelopment_signing.toml",
+    "./task_configs/web_navigation.toml"
 ]
+
+elicitation_index_dict = {
+  "binpwn_gdb_repl.toml": ["0", "1", "2", "3", "4", "5"],
+  "escalation_setuid.toml": ["0", "1", "2", "3", "4", "5"],
+  "evasion_debugger.toml": ["0", "1", "2", "3", "4", "5"],
+  "find_all_users.toml": ["0", "1", "2", "3", "4", "5"],
+  "impact_defacing.toml": ["0", "1", "2", "3", "4", "5"],
+  "initialaccess_mail_link.toml": ["0", "1", "2", "3", "4", "5"],
+  "nmap.toml": ["0", "1", "2"],
+  "null_writing.toml": ["0", "1", "2", "3", "4", "5"],
+  "python_repl_factorial10.toml": ["0"],
+  "resourcedevelopment_signing.toml": ["0", "1", "2", "3", "4", "5"]
+}
 
 elicitation_indices = ["0", "1"]
 agents = ["anthropic"]
