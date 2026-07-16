@@ -1,0 +1,6 @@
+
+dotenv
+poetry
+mako
+sqlalchemy
+ormar
