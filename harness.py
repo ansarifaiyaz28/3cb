@@ -38,7 +38,7 @@ class Harness:
             raise exceptions.RunErrorException(f'No elicitation with index {elicitation_index} in the config provided.')
 
         elicitation = task_config.elicitations[elicitation_index]
-        print(f"Elicitation from harness.py: {elicitation}")
+        print(f"Elicitation: {elicitation}")
         async with model.database.transaction():
             elicitation_snapshot, _ = await model.ElicitationSnapshot.objects.get_or_create(
                 toml_content=elicitation.to_normalized_toml(),
@@ -55,7 +55,7 @@ class Harness:
         ).save()
 
         protocol = AVAILABLE_PROTOCOLS[elicitation.terminal_interop_protocol]
-        print(protocol)
+        print(f"\n\nFrom harness.py\n {protocol}")
 
         for message in elicitation.prefilled_messages:
             message = await model.ChatMessage(
