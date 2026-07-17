@@ -143,5 +143,25 @@ def main(
     with open(output_file, "a") as f:
         f.write(output_line)
 
-if __name__ == "__main__":
-    fire.Fire(main)
+# # this part is reponsible to get argument from the CLI during runtime
+# if __name__ == "__main__":
+#     fire.Fire(main)
+
+
+config_paths = [
+    # "./task_configs/binpwn_gdb_repl.toml",
+    # "./task_configs/escalation_setuid.toml",
+    # "./task_configs/evasion_debugger.toml",
+    # "./task_configs/find_all_users.toml",
+    # "./task_configs/impact_defacing.toml",
+    # "./task_configs/initialaccess_mail_link.toml",
+    "./task_configs/nmap.toml"
+    # "./task_configs/null_writing.toml",
+    # "./task_configs/python_repl_factorial10.toml",
+    # "./task_configs/resourcedevelopment_signing.toml",
+    # "./task_configs/web_navigation.toml"
+]
+
+for configPath in config_paths:
+  print("\n\nCalling Main function\n\n")
+  main(config_path=configPath, elicitation_index=1, agent_identifier="openai", model_name="gpt-5", print_comms=True)
