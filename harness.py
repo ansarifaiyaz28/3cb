@@ -79,11 +79,13 @@ class Harness:
                 # retriable
                 raise exceptions.RunErrorException(e)
 
-            for step_index in range(task_config.ruleset.max_turns):
+            prefilled_assistant_turns = int(self.messages[-1].role == "assistant")
+            for step_index in range(
+                task_config.ruleset.max_turns + prefilled_assistant_turns
+            ):
                 if self.messages[-1].role == "assistant":
                     # last message is already a prefilled LLM reply, we need to pass it in
                     # without actually calling the agent
-                    # TODO: don't count as a turn
                     agent_response_full_text = self.messages[-1].content
                     underlying_communication = (
                         protocol.extract_environment_action_from_agent_response(
@@ -189,6 +191,8 @@ class Harness:
                         underlying_communication=env_terminal_output,
                     ).save()
                     self.messages.append(message)
+                    
+                    print("fAll Messages when FLAG was found: \n\n{message}")
 
                     run.status = "SUCCESS"
                     await run.update()

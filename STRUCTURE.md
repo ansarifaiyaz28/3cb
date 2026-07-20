@@ -11,3 +11,10 @@
     - build the docker image 
     - reset any previous runnign container and start a fresh container 
 - Run the agent-environment loop
+    - calling OpenAI
+- Extract Terminal command from the model response
+- Check whether the model has found the flag
+- If no Flag has been found, execute the command in the container
+- Check container output for the flag
+- Send terminal output back to the Model for further iteration
+- Handle Termination a. when success with FLag b. when failure if iternation completed by the code "return run".
