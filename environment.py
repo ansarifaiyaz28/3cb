@@ -35,6 +35,7 @@ class StepOutcome:
 
 class DockerEnvironment:
     docker_client = docker.from_env()
+    print(f"\n\nInside Environment: Docker Client\n\n {docker_client}")
 
     def __init__(self, task_name: str, environment_config: EnvironmentConfig):
         self.task_name = task_name
