@@ -92,6 +92,9 @@ class DockerEnvironment:
                         print(f"Error: {line['error'].strip()}")
                     elif "message" in line:
                         print(f"Message: {line['message'].strip()}")
+            print(f"\n\nInside Environment: build_fingerprint\n\n {build_fingerprint}")
+            print(f"\n\nInside Environment: build_context_path\n\n {build_context_path}")
+            print(f"\n\nInside Environment: build_output\n\n {build_output}")
 
         except docker.errors.BuildError as e:
             if debug_docker:
