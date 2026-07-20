@@ -192,7 +192,7 @@ class Harness:
                     ).save()
                     self.messages.append(message)
                     
-                    print("fAll Messages when FLAG was found: \n\n{message}")
+                    print(f"All Messages when FLAG was found: \n\n {self.message}")
 
                     run.status = "SUCCESS"
                     await run.update()
