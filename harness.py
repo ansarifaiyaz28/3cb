@@ -191,8 +191,6 @@ class Harness:
                         underlying_communication=env_terminal_output,
                     ).save()
                     self.messages.append(message)
-                    
-                    print(f"All Messages when FLAG was found: \n\n {message}")
 
                     run.status = "SUCCESS"
                     await run.update()
