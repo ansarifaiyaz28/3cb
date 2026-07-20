@@ -1,7 +1,7 @@
 from pathlib import Path
 
 import docker
-from docker.errors import BuildError, DockerException
+from docker.errors import BuildError, DockerException, NotFound
 
 
 def build_and_run() -> None:
@@ -11,6 +11,14 @@ def build_and_run() -> None:
     try:
         # Connect using the same environment/config as the Docker CLI.
         client = docker.from_env()
+
+        # remove any existing container with the same name
+        try:
+            old_container = client.containers.get(image_name)
+            print(f"Removing existing container: {image_name}")
+            old_container.remove(force=True)
+        except NotFound:
+            pass
 
         print(f"Building {image_name}...")
 
@@ -29,7 +37,7 @@ def build_and_run() -> None:
         container = client.containers.run(
             image=image.id,
             detach=True,
-            ports={"5000/tcp": 8000},
+            ports={"5000/tcp": 5000},
             name="my-app-container",
         )
 
